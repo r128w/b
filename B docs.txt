@@ -1,0 +1,54 @@
+--==[B] Docs==--
+
+Syntax Rules:
+- All words must start with b, unless they are string literals
+- Most functions take the form <function> <arg> <arg>
+- NO parentheses, NO symbols. (decimal points are OK)
+- While it is possible to assign a value to a variable that does not start with b, that value cannot be accessed in code
+    - This is a feature, not a consequence of poorly-planned implementation
+
+Error Messsage Meanings:
+
+Labels:
+Written as :<name>, referred to as <name>
+
+Variables:
+Referred to as <name>, set with bet "<name>"
+Non-assigned variable always returns 0
+
+Hard-coded Values:
+Strings are surrounded by ""
+Numbers are typed normally, eg 1 or 1.5
+
+Functions:
+bet <arg1> <arg2> - sets variable <arg1> to <arg2>/assigns new variable <arg1> as <arg2>
+bif <arg> <label> - if <arg> is not 0 or below, goto <label>
+bif bot <arg> <label> - if not: functions same as above but inverted
+boto <label> - goto <label>
+brint <arg> - prints <arg> to console as <raw value> | <ASCII'd value>
+binput <arg1> <arg2> - takes console input with <arg2> as a prompt, sets variable <arg1> to inputted value (strings only)
+binput bumb <arg1> <arg2> - takes console input with <arg2> as a prompt, sets variable <arg1> to inputted value (!integers! only)
+
+Functions with return values:
+blus <arg1> <arg2> - returns sum of <arg1> and <arg2>
+binus <arg1> <arg2> - returns <arg1> minus <arg2>
+bimes <arg1> <arg2> - returns product of <arg1> and <arg2>
+bivide <arg1> <arg2> - returns <arg1> divided by <arg2>
+bar <arg1> <arg2> - returns the <arg2>th char of <arg1>
+batch <arg1> <arg2> - returns 1 if <arg1> and <arg2> are equal, 0 if otherwise
+betch <arg1> <arg2> - returns value of <arg1> (<arg2> is irrelevant, and included for parser simplicity)
+
+Commenting:
+
+-==Examples==-
+[expected output: 7]
+bet "bree" blus 1 2
+bet "bour" binus 6 2
+brint blus bree bour
+
+[expected output: counting down from 100 to 0]
+bet "bounter" 100
+:boop
+bet "bounter" binus bounter 1
+brint bounter
+bif bounter boop
