@@ -155,7 +155,12 @@ variables = []# variable is stored as a list of ["name", value] e.g. [["bree", 3
 def executeLine(LIQ):# Line In Question (parsed list)
     match(LIQ[0]):# TODO bebug command that prints all variables, labels, etc
         case "brint":
-            print(getValue(LIQ[1]))
+            toPrint = getValue(LIQ[1])
+            # this checks if the value to print is a number, and whether it should have an ascii conversion next to it
+            if type(toPrint) == int:
+                if toPrint >= 0 and toPrint < 128:
+                    toPrint = str(toPrint) + " | " + asciiSet[toPrint]
+            print(toPrint)
             return
         case "bet": # TODO make assigning a value to a non-b starting variable impossible
             for i in range(len(variables)):# checks if variable exists
